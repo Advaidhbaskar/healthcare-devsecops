@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePlus | Healthcare Appointment System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">CarePlus</div>
+        <span>Healthcare Appointment Portal</span>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Your Health, Our Priority</h1>
+            <p>Book a healthcare appointment through our secure demo portal.</p>
+        </section>
+
+        <section class="booking-card">
+            <h2>Book an Appointment</h2>
+
+            <form id="appointment-form" action="/book" method="POST">
+                <label for="name">Patient Name</label>
+                <input type="text" id="name" name="name"
+                       maxlength="60" pattern="[A-Za-z ]+"
+                       placeholder="Enter demo name" required>
+
+                <label for="department">Department</label>
+                <select id="department" name="department" required>
+                    <option value="">Select Department</option>
+                    <option>Cardiology</option>
+                    <option>Neurology</option>
+                    <option>General Medicine</option>
+                    <option>Orthopedics</option>
+                    <option>Dermatology</option>
+                </select>
+
+                <label for="date">Appointment Date</label>
+                <input type="date" id="date" name="date" required>
+
+                <button type="submit">Book Appointment</button>
+            </form>
+
+            <p id="result" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="info">
+            <h2>Our Departments</h2>
+            <div class="departments">
+                <div>Cardiology</div>
+                <div>Neurology</div>
+                <div>General Medicine</div>
+                <div>Orthopedics</div>
+                <div>Dermatology</div>
+            </div>
+        </section>
+
+        <p class="disclaimer">
+            Academic demonstration only. Do not enter real patient information.
+        </p>
+    </main>
+
+    <footer>
+        CarePlus Healthcare Demo | DevSecOps Project
+    </footer>
+</body>
+</html>

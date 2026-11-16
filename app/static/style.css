@@ -1,0 +1,118 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+header {
+    background: #075985;
+    color: white;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 45px 20px;
+    background: #e0f2fe;
+}
+
+.hero h1 {
+    color: #075985;
+    font-size: 32px;
+}
+
+.booking-card {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    margin: 35px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.booking-card h2 {
+    text-align: center;
+    color: #075985;
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 25px;
+    background: #0284c7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #0369a1;
+}
+
+#result {
+    text-align: center;
+    font-weight: bold;
+}
+
+.departments {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+}
+
+.departments div {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+}
+
+.info {
+    text-align: center;
+}
+
+.disclaimer {
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+    margin: 30px;
+}
+
+footer {
+    background: #075985;
+    color: white;
+    text-align: center;
+    padding: 18px;
+}
