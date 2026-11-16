@@ -1,29 +1,27 @@
+FROM python:3.12-alpine
 
-FROM python:3.12-slim
-
-# Set application directory
 WORKDIR /app
 
-# Prevent Python from writing bytecode
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Install dependencies
+# Update operating system packages to available patched versions
+RUN apk update && apk upgrade
+# Install Python dependencies
 COPY app/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application files
+# Copy application
 COPY app/ .
 
-# Create an unprivileged user
-RUN useradd --uid 10001 --create-home appuser \
+# Create non-root application user
+RUN adduser -D -u 10001 appuser \
     && chown -R appuser:appuser /app
 
 USER appuser
 
 EXPOSE 5000
 
-# Container health check
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:5000/health', timeout=3)" || exit 1
 
