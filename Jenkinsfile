@@ -15,13 +15,15 @@ pipeline {
             }
         }
 
+        
         stage('Gitleaks - Secret Scan') {
             steps {
                 bat '''
-                docker run --rm -v "%WORKSPACE%:/repo" ghcr.io/gitleaks/gitleaks:latest dir --no-git /repo
+                docker run --rm -v "%WORKSPACE%:/repo" ghcr.io/gitleaks/gitleaks:latest dir /repo
                 '''
             }
         }
+
 
         stage('Trivy - Dependency Scan') {
             steps {
