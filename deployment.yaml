@@ -1,0 +1,39 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: healthcare-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: healthcare-app
+  template:
+    metadata:
+      labels:
+        app: healthcare-app
+    spec:
+      containers:
+        - name: healthcare-container
+          image: advaidhb/healthcare-devsecops:latest
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 10001
+            capabilities:
+              drop:
+                - ALL

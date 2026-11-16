@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app/ .
 
 # Create an unprivileged user
-RUN useradd --create-home appuser \
+RUN useradd --uid 10001 --create-home appuser \
     && chown -R appuser:appuser /app
 
 USER appuser
